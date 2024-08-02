@@ -1,0 +1,33 @@
+﻿@model List<HMT_Tech.Models.AddStationery>
+
+@{
+    int serialNumber = 1; // Initialize serial number counter
+}
+
+@{
+    var role = ViewBag.Role; // Use null conditional operator to prevent NullReferenceException
+    
+}
+
+
+@foreach (var item in Model)
+{
+    <tr>
+         <td>@serialNumber</td> 
+        <td>@item.Name</td>
+        <td>@item.Price</td>
+        <td>@item.Quantity</td>
+         @if (role == "Manager" || role == "Employee"){
+         <td> <a href="@Url.Action("requestformpage", new { itemid = item.Id }) "> <input type="submit" class="btn btn-outline-primary " value="Send Request"></a></td>
+         }
+
+        @if (role == "Admin")
+        {
+            <td> <a href="@Url.Action("Deleteitem", new { itemid = item.Id })
+                " class="btn btn-outline-danger px-3">Delete</a></td>
+        }
+    </tr>
+    serialNumber++;
+}
+
+

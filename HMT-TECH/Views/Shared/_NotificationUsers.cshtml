@@ -1,0 +1,123 @@
+﻿@inject HMT_Tech.Database.ApplicationDbContext dbContext
+
+@{
+    var notifications = dbContext.NotificationsUser
+                                 .OrderByDescending(ntf => ntf.Time) // Use Id if Time is not available
+                                 .ToList();
+    var notificationCount = notifications.Count;
+    var hasNewNotification = notificationCount > 0; // Assuming notifications are new if count > 0
+
+
+    
+}
+
+<style>
+
+    .notification-dropdown {
+    max-height: 300px; /* Adjust the height as needed */
+    overflow-y: auto;
+    }
+
+</style>
+
+
+<li class="nav-item nav-icon nav-item-icon dropdown">
+    <a href="#" class="search-toggle dropdown-toggle" id="dropdownMenuButton"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="position: relative;">
+
+        @if (hasNewNotification)
+        {
+            <span id="newNotificationLabel" style="color: white; background-color: darkblue; font-weight: bold; font-size: 12px; padding: 1px 7px; border-radius: 3px; position: absolute; top: -6px; left: 10px; line-height:2.5;">New</span>
+        }
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+        </svg>
+    </a>
+
+    <div class="iq-sub-dropdown dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <div class="card shadow-none m-0">
+            <div class="card-body p-0 ">
+                <div class="cust-title p-3">
+                    <div class="d-flex align-items-center justify-content-between">
+                      
+                        <h5 class="mb-0">Notifications</h5>
+                        <a class="badge badge-primary badge-card" href="#">@notificationCount</a>
+                    </div>
+                </div>
+                <div class="px-3 pt-0 pb-0 sub-card notification-dropdown">
+                    @if (notificationCount > 0)
+        {
+
+                    @foreach (var ntf in notifications)
+                    {
+                            <a href="@Url.Action("viewrequest")" class="iq-sub-card">
+                            <div class="media align-items-center cust-card py-3 border-bottom">
+                                <div class="">
+                                    <img class="avatar-50 rounded-small"
+                                    src="@ntf.Image" alt="01">
+                                </div>
+                                <div class="media-body ml-3">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <h6 class="mb-0">@ntf.Status by <br>@ntf.Role</h6>
+                                        <small class="text-dark"><b>@ntf.Time.ToString(@"h\:mm")</b></small>
+
+                                    </div>
+                                    <small class="mb-0">Item: @ntf.Stationery</small>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                  }
+                    else
+                    {
+                        <p class="text-center">No Notifications</p>
+                    }
+                </div>
+                @if (notificationCount > 0)
+                {
+                    <a class="right-ic btn btn-primary btn-block position-relative p-2"
+                       href="@Url.Action("viewrequest")" role="button">
+                        View All
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+</li>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // Inline script to handle notification count and local storage logic
+    var currentNotificationCount = @notificationCount;
+
+    // Check previous notification count from local storage
+    var previousNotificationCount = localStorage.getItem('notificationCount');
+
+    // If the previous count is not null and the current count is greater, reset the viewed state
+    if (previousNotificationCount !== null && currentNotificationCount > parseInt(previousNotificationCount)) {
+        localStorage.setItem('notificationViewed', 'false');
+    }
+
+    // Update the stored notification count
+    localStorage.setItem('notificationCount', currentNotificationCount);
+
+    // Hide the span immediately if the notification was viewed
+    if (localStorage.getItem('notificationViewed') === 'true') {
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('newNotificationLabel').style.display = 'none';
+        });
+    }
+</script>
+
+
+<script>
+    $(document).ready(function () {
+        // Attach a click event handler to the dropdown button
+        $('#dropdownMenuButton').click(function () {
+            $('#newNotificationLabel').fadeOut(); // Fade out the span
+            localStorage.setItem('notificationViewed', 'true'); // Store the state in local storage
+        });
+    });
+</script>

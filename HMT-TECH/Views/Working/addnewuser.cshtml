@@ -1,0 +1,336 @@
+﻿@{
+    ViewData["Title"] = "Add User";
+}
+
+@* @model HMT_Tech.Models.Register *@
+
+<body class="  ">
+        <div class="content-page">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex flex-wrap align-items-center justify-content-between breadcrumb-content">
+                                    <h5>All Employees</h5>
+                                    <div class="d-flex align-items-center">
+                                        <div class="list-grid-toggle d-flex align-items-center mr-3">
+                                            <div data-toggle-extra="tab" data-target-extra="#grid" class="active">
+                                          
+                                            </div>
+
+                                        </div>
+                                        <div class="pl-3 border-left btn-new">
+                                            <a href="#" class="btn btn-primary" data-target="#new-user-modal"
+                                               data-toggle="modal">New User</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="grid" class="item-content animate__animated animate__fadeIn active"
+                     data-toggle-extra="tab-content">
+                    <div class="row">
+                    @await Html.PartialAsync("_UserList", (List<HMT_Tech.Models.Register>)Model) <!-- Cast Model to List<Register> -->
+          
+                    </div>
+                </div>
+
+                <!-- Page end  -->
+            </div>
+        </div>
+    </div>
+    <!-- Wrapper End-->
+    <!-- Modal list start -->
+    <div class="modal fade" role="dialog" aria-modal="true" id="add-balance">
+        <div class="modal-dialog  modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header d-block text-center pb-3 border-bottom">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h3 class="modal-title" id="exampleModalCenterTitle02">Add Amount</h3>
+                </div>
+                <div class="modal-body">
+                    <form action="@Url.Action("AddBalance")" method="post">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group mb-3">
+                                    <label for="modalEmail" class="h5">Email*</label>
+                                    <input type="text" class="form-control" id="modalEmail" readonly required>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group mb-3">
+                                    <label for="modalIdentity" class="h5">Identity*</label>
+                                    <input type="text" class="form-control" name="modalIdentity" id="modalIdentity" readonly required>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <label for="exampleInputText2" class="h5">Add Balance</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" style="color: green; font-weight: bold;">$</span>
+                                    </div>
+                                    <input type="number" class="form-control" name="addBalanceAmount" id="addBalanceAmount"
+                                           placeholder="Add Amount" aria-label="Amount (to the nearest dollar)" required>
+
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="d-flex flex-wrap align-items-ceter justify-content-center mt-2">
+                                    <input type="submit" class="btn btn-primary mr-3" value="Add Amount">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade bd-example-modal-lg" role="dialog" aria-modal="true" id="USer-task-modal">
+        <div class="modal-dialog  modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header d-block text-center pb-3 border-bttom">
+                    <h3 class="modal-title" id="exampleModalCenterTitle">New Task</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group mb-3">
+                                <label for="exampleInputText02" class="h5">Task Name</label>
+                                <input type="text" class="form-control" id="exampleInputText02"
+                                       placeholder="Enter task Name">
+                                <a href="#" class="task-edit text-body"><i class="ri-edit-box-line"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group mb-3">
+                                <label for="exampleInputText2" class="h5">Assigned to</label>
+                                <select name="type" class="selectpicker form-control" data-style="py-0">
+                                    <option>Memebers</option>
+                                    <option>Kianna Septimus</option>
+                                    <option>Jaxson Herwitz</option>
+                                    <option>Ryan Schleifer</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group mb-3">
+                                <label for="exampleInputText05" class="h5">Due Dates*</label>
+                                <input type="date" class="form-control" id="exampleInputText05" value="">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group mb-3">
+                                <label for="exampleInputText2" class="h5">Category</label>
+                                <select name="type" class="selectpicker form-control" data-style="py-0">
+                                    <option>Design</option>
+                                    <option>Android</option>
+                                    <option>IOS</option>
+                                    <option>Ui/Ux Design</option>
+                                    <option>Development</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group mb-3">
+                                <label for="exampleInputText040" class="h5">Description</label>
+                                <textarea class="form-control" id="exampleInputText040" rows="2"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group mb-3">
+                                <label for="exampleInputText005" class="h5">Checklist</label>
+                                <input type="text" class="form-control" id="exampleInputText005" placeholder="Add List">
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group mb-0">
+                                <label for="exampleInputText01" class="h5">Attachments</label>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="inputGroupFile003">
+                                    <label class="custom-file-label" for="inputGroupFile003">Upload media</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="d-flex flex-wrap align-items-ceter justify-content-center mt-4">
+                                <div class="btn btn-primary mr-3" data-dismiss="modal">Save</div>
+                                <div class="btn btn-primary" data-dismiss="modal">Cancel</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade bd-example-modal-lg" role="dialog" aria-modal="true" id="new-user-modal">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header d-block text-center pb-3 border-bottom">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h3 class="modal-title" id="exampleModalCenterTitle02">New User</h3>
+                </div>
+
+
+                @await Html.PartialAsync("_UserForm", new HMT_Tech.Models.Register())
+    
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade bd-example-modal-lg" role="dialog" aria-modal="true" id="new-create-modal">
+        <div class="modal-dialog  modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header d-block text-center pb-3 border-bttom">
+                    <h3 class="modal-title" id="exampleModalCenterTitle03">New Task</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group mb-3">
+                                <label for="exampleInputText03" class="h5">Task Name</label>
+                                <input type="text" class="form-control" id="exampleInputText03"
+                                       placeholder="Enter task Name">
+                                <a href="#" class="task-edit text-body"><i class="ri-edit-box-line"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label for="exampleInputText2" class="h5">Assigned to</label>
+                                <select  class="selectpicker form-control" data-style="py-0">
+                                    <option>Memebers</option>
+                                    <option>Kianna Septimus</option>
+                                    <option>Jaxson Herwitz</option>
+                                    <option>Ryan Schleifer</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label for="exampleInputText2" class="h5">Project Name</label>
+                                <select class="selectpicker form-control" data-style="py-0">
+                                    <option>Enter your project Name</option>
+                                    <option>Ui/Ux Design</option>
+                                    <option>Dashboard Templates</option>
+                                    <option>Wordpress Themes</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group mb-3">
+                                <label for="exampleInputText40" class="h5">Description</label>
+                                <textarea class="form-control" id="exampleInputText40" rows="2"
+                                          placeholder="Textarea"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group mb-3">
+                                <label for="exampleInputText8" class="h5">Checklist</label>
+                                <input type="text" class="form-control" id="exampleInputText8" placeholder="Add List">
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group mb-0">
+                                <label for="exampleInputText01" class="h5">Attachments</label>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="inputGroupFile01">
+                                    <label class="custom-file-label" for="inputGroupFile01">Upload media</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="d-flex flex-wrap align-items-ceter justify-content-center mt-4">
+                                <div class="btn btn-primary mr-3" data-dismiss="modal">Save</div>
+                                <div class="btn btn-primary" data-dismiss="modal">Cancel</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @* Random Hash code JS *@
+    <script>
+        // Get the element with the ID "exampleInputText006" (the disabled input)
+        const identityInput = document.getElementById("exampleInputText006");
+
+        // Function to generate a random 6-character alphanumeric string
+        function generateRandomID() {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let result = '';
+            for (let i = 0; i < 6; i++) {
+                const randomIndex = Math.floor(Math.random() * characters.length);
+                result += characters[randomIndex];
+            }
+            return result;
+        }
+
+        // Function to check if the ID is unique by comparing with previously generated IDs in localStorage
+        function isUniqueID(id) {
+            let storedIDs = localStorage.getItem("generatedIDs");
+            if (storedIDs === null) {
+                return true;
+            }
+            storedIDs = JSON.parse(storedIDs);
+            return !storedIDs.includes(id);
+        }
+
+        // Function to generate a unique identity code
+        function generateUniqueID() {
+            let uniqueID = generateRandomID();
+
+            // Ensure the ID is unique
+            while (!isUniqueID(uniqueID)) {
+                uniqueID = generateRandomID();
+            }
+
+            // Store the unique ID in localStorage
+            let storedIDs = localStorage.getItem("generatedIDs");
+            if (storedIDs === null) {
+                storedIDs = [];
+            } else {
+                storedIDs = JSON.parse(storedIDs);
+            }
+            storedIDs.push(uniqueID);
+            localStorage.setItem("generatedIDs", JSON.stringify(storedIDs));
+
+            // Set the value of the identityInput element
+            identityInput.value = uniqueID;
+        }
+
+        // Call the function to generate the ID on page load
+        generateUniqueID();
+    </script>
+
+    @* function for fetching data from db on Modal using js *@
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(function () {
+            $('.open-modal').click(function () {
+                var email = $(this).data('email');
+                var identity = $(this).data('identity');
+
+
+                $('#modalEmail').val(email);
+                $('#modalIdentity').val(identity);
+
+                // Optionally, you can clear any previous values in the amount field
+                $('#exampleInputText2').val('');
+
+                // Show the modal
+               
+            });
+        });
+    </script>
+</body>

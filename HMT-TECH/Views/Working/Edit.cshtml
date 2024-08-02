@@ -1,0 +1,483 @@
+﻿@{
+    ViewData["Title"] = "Request Page";
+}
+
+
+
+@model HMT_Tech.Models.AddStationery
+
+
+ 
+<body class=" color-dark ">
+
+
+
+        <div class="content-page">
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12 col-lg-12">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between">
+                                <div class="header-title">
+                                    <h4 class="card-title">Make Request</h4>
+                                </div>
+                                <div>
+                                    <h5 style="font-weight: 900; color: green;">Account Balance: $@ViewBag.Balance</h5>
+                                </div>
+                            </div>
+
+                            <div class="card-body">
+                                <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate, ex ac
+                                    venenatis mollis, diam nibh finibus leo</p> -->
+
+                            <form id="stationeryForm" method="post" action="/Edit">
+                                <div class="form-row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="validationDefault01">Identity:</label>
+                                        <input type="text" class="form-control" id="validationDefault01" required="" readonly value="@ViewBag.Identity">
+                                       
+                                        <input type="hidden" name="ItemId" value="@ViewBag.ItemId" />
+
+
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="validationDefault02">Full Name:</label>
+                                        <input type="text" class="form-control" id="validationDefault02" readonly required="" value="@ViewBag.Name" name="Name">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="validationDefault03">Manager Name:</label>
+                                        <input type="text" class="form-control" id="validationDefault03" readonly required="" value="@ViewBag.Manager">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="validationDefault04">Date:</label>
+                                        <input type="date" class="form-control" id="validationDefault04" readonly name="Date" required="" value="@ViewBag.Date">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="stationeryName">Stationery:</label>
+                                        <input type="text" class="form-control" name="ItemName" id="stationeryName" required="" value="@ViewBag.Stationery" readonly>
+                                        <input type="hidden" name="Status" value="Pending" />
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="quantity">Quantity:</label>
+                                        <div class="input-group">
+                                            <button class="btn btn-outline-primary" type="button" id="decrement">-</button>
+                                            <input type="text" class="form-control text-center" id="quantity" name="Quantity" value="@ViewBag.Qty" readonly>
+                                            <button class="btn btn-outline-primary" type="button" id="increment">+</button>
+                                            <span class="input-group-text mx-2" style="width: 40%" id="price">$<span id="price-value">@ViewBag.Price</span></span>
+                                            <input type="hidden" name="Price" id="hiddenPrice" value="@Model.Price">
+
+
+                                        </div>
+                                        <span id="quantityError" class="text-danger"></span>
+                                        <span id="balanceError" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-primary px-2 py-1" type="submit">Update form</button>
+                                    <button class="btn btn-primary px-3 py-1" type="button" id="cancelBtn">Cancel</button>
+                                </div>
+                            </form>
+                             
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Wrapper End-->
+        <!-- Modal list start -->
+        <div class="modal fade" role="dialog" aria-modal="true" id="new-project-modal">
+            <div class="modal-dialog  modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header d-block text-center pb-3 border-bttom">
+                        <h3 class="modal-title" id="exampleModalCenterTitle01">New Project</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group mb-3">
+                                    <label for="exampleInputText01" class="h5">Project Name*</label>
+                                    <input type="text" class="form-control" id="exampleInputText01"
+                                           placeholder="Project Name">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group mb-3">
+                                    <label for="exampleInputText2" class="h5">Categories *</label>
+                                    <select name="type" class="selectpicker form-control" data-style="py-0">
+                                        <option>Category</option>
+                                        <option>Android</option>
+                                        <option>IOS</option>
+                                        <option>Ui/Ux Design</option>
+                                        <option>Development</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group mb-3">
+                                    <label for="exampleInputText004" class="h5">Due Dates*</label>
+                                    <input type="date" class="form-control" id="exampleInputText004" value="">
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group mb-3">
+                                    <label for="exampleInputText07" class="h5">Assign Members*</label>
+                                    <input type="text" class="form-control" id="exampleInputText07">
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="d-flex flex-wrap align-items-ceter justify-content-center mt-2">
+                                    <div class="btn btn-primary mr-3" data-dismiss="modal">Save</div>
+                                    <div class="btn btn-primary" data-dismiss="modal">Cancel</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade bd-example-modal-lg" role="dialog" aria-modal="true" id="new-task-modal">
+            <div class="modal-dialog  modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header d-block text-center pb-3 border-bttom">
+                        <h3 class="modal-title" id="exampleModalCenterTitle">New Task</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group mb-3">
+                                    <label for="exampleInputText02" class="h5">Task Name</label>
+                                    <input type="text" class="form-control" id="exampleInputText02"
+                                           placeholder="Enter task Name">
+                                    <a href="#" class="task-edit text-body"><i class="ri-edit-box-line"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group mb-3">
+                                    <label for="exampleInputText2" class="h5">Assigned to</label>
+                                    <select name="type" class="selectpicker form-control" data-style="py-0">
+                                        <option>Memebers</option>
+                                        <option>Kianna Septimus</option>
+                                        <option>Jaxson Herwitz</option>
+                                        <option>Ryan Schleifer</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group mb-3">
+                                    <label for="exampleInputText05" class="h5">Due Dates*</label>
+                                    <input type="date" class="form-control" id="exampleInputText05" value="">
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="form-group mb-3">
+                                    <label for="exampleInputText2" class="h5">Category</label>
+                                    <select name="type" class="selectpicker form-control" data-style="py-0">
+                                        <option>Design</option>
+                                        <option>Android</option>
+                                        <option>IOS</option>
+                                        <option>Ui/Ux Design</option>
+                                        <option>Development</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group mb-3">
+                                    <label for="exampleInputText040" class="h5">Description</label>
+                                    <textarea class="form-control" id="exampleInputText040" rows="2"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group mb-3">
+                                    <label for="exampleInputText005" class="h5">Checklist</label>
+                                    <input type="text" class="form-control" id="exampleInputText005"
+                                           placeholder="Add List">
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group mb-0">
+                                    <label for="exampleInputText01" class="h5">Attachments</label>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="inputGroupFile003">
+                                        <label class="custom-file-label" for="inputGroupFile003">Upload media</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="d-flex flex-wrap align-items-ceter justify-content-center mt-4">
+                                    <div class="btn btn-primary mr-3" data-dismiss="modal">Save</div>
+                                    <div class="btn btn-primary" data-dismiss="modal">Cancel</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade bd-example-modal-lg" role="dialog" aria-modal="true" id="new-user-modal">
+            <div class="modal-dialog  modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header d-block text-center pb-3 border-bttom">
+                        <h3 class="modal-title" id="exampleModalCenterTitle02">New User</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group mb-3 custom-file-small">
+                                    <label for="exampleInputText01" class="h5">Upload Profile Picture</label>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="inputGroupFile02">
+                                        <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group mb-3">
+                                    <label for="exampleInputText2" class="h5">Full Name</label>
+                                    <input type="text" class="form-control" id="exampleInputText2"
+                                           placeholder="Enter your full name">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group mb-3">
+                                    <label for="exampleInputText04" class="h5">Phone Number</label>
+                                    <input type="text" class="form-control" id="exampleInputText04"
+                                           placeholder="Enter phone number">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group mb-3">
+                                    <label for="exampleInputText006" class="h5">Email</label>
+                                    <input type="text" class="form-control" id="exampleInputText006"
+                                           placeholder="Enter your Email">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group mb-3">
+                                    <label for="exampleInputText2" class="h5">Type</label>
+                                    <select name="type" class="selectpicker form-control" data-style="py-0">
+                                        <option>Type</option>
+                                        <option>Trainee</option>
+                                        <option>Employee</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group mb-3">
+                                    <label for="exampleInputText2" class="h5">Role</label>
+                                    <select name="type" class="selectpicker form-control" data-style="py-0">
+                                        <option>Role</option>
+                                        <option>Designer</option>
+                                        <option>Developer</option>
+                                        <option>Manager</option>
+                                        <option>BDE</option>
+                                        <option>SEO</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="d-flex flex-wrap align-items-ceter justify-content-center mt-2">
+                                    <div class="btn btn-primary mr-3" data-dismiss="modal">Save</div>
+                                    <div class="btn btn-primary" data-dismiss="modal">Cancel</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade bd-example-modal-lg" role="dialog" aria-modal="true" id="new-create-modal">
+            <div class="modal-dialog  modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header d-block text-center pb-3 border-bttom">
+                        <h3 class="modal-title" id="exampleModalCenterTitle03">New Task</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group mb-3">
+                                    <label for="exampleInputText03" class="h5">Task Name</label>
+                                    <input type="text" class="form-control" id="exampleInputText03"
+                                           placeholder="Enter task Name">
+                                    <a href="#" class="task-edit text-body"><i class="ri-edit-box-line"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group mb-3">
+                                    <label for="exampleInputText2" class="h5">Assigned to</label>
+                                    <select name="type" class="selectpicker form-control" data-style="py-0">
+                                        <option>Memebers</option>
+                                        <option>Kianna Septimus</option>
+                                        <option>Jaxson Herwitz</option>
+                                        <option>Ryan Schleifer</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group mb-3">
+                                    <label for="exampleInputText2" class="h5">Project Name</label>
+                                    <select name="type" class="selectpicker form-control" data-style="py-0">
+                                        <option>Enter your project Name</option>
+                                        <option>Ui/Ux Design</option>
+                                        <option>Dashboard Templates</option>
+                                        <option>Wordpress Themes</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group mb-3">
+                                    <label for="exampleInputText40" class="h5">Description</label>
+                                    <textarea class="form-control" id="exampleInputText40" rows="2"
+                                              placeholder="Textarea"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group mb-3">
+                                    <label for="exampleInputText8" class="h5">Checklist</label>
+                                    <input type="text" class="form-control" id="exampleInputText8"
+                                           placeholder="Add List">
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group mb-0">
+                                    <label for="exampleInputText01" class="h5">Attachments</label>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="inputGroupFile01">
+                                        <label class="custom-file-label" for="inputGroupFile01">Upload media</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="d-flex flex-wrap align-items-ceter justify-content-center mt-4">
+                                    <div class="btn btn-primary mr-3" data-dismiss="modal">Save</div>
+                                    <div class="btn btn-primary" data-dismiss="modal">Cancel</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
+<script>
+    $(document).ready(function () {
+        var stockQuantity = @Model.Quantity; // Available stock quantity from your model
+        var itemPrice = parseFloat($('#price-value').text()); // Stationery price from your model
+        var userBalance = parseFloat('@ViewBag.Balance'); // User's current balance
+
+        function updateTotalPrice() {
+            var quantity = parseInt($('#quantity').val());
+            var totalPrice = itemPrice * quantity;
+            $('#price-value').text(totalPrice.toFixed(2));
+        }
+
+        // Function to validate quantity against stock
+        function validateQuantity() {
+            var quantity = parseInt($('#quantity').val());
+            if (quantity > stockQuantity) {
+                $('#quantityError').text('Out of stock');
+                return false;
+            } else {
+                $('#quantityError').text('');
+                return true;
+            }
+        }
+
+        // Function to validate balance
+        function validateBalance() {
+            var quantity = parseInt($('#quantity').val());
+            var totalPrice = itemPrice * quantity;
+            if (totalPrice > userBalance) {
+                $('#balanceError').text('Insufficient balance');
+                return false;
+            } else {
+                $('#balanceError').text('');
+                return true;
+            }
+        }
+
+        // Increment button click handler
+        $('#increment').click(function () {
+            var quantity = parseInt($('#quantity').val());
+            $('#quantity').val(quantity + 1);
+            updateTotalPrice();
+        });
+
+        // Decrement button click handler
+        $('#decrement').click(function () {
+            var quantity = parseInt($('#quantity').val());
+            if (quantity > 1) {
+                $('#quantity').val(quantity - 1);
+                updateTotalPrice();
+            }
+        });
+
+        // Form submission validation
+        $('form').submit(function (event) {
+            if (!validateQuantity() || !validateBalance()) {
+                event.preventDefault(); // Prevent form submission if validation fails
+            }
+        });
+
+        // Cancel button click handler (example)
+        $('#cancelBtn').click(function () {
+            // Handle cancel action here, if needed
+            alert('Cancelled');
+        });
+    });
+</script>
+
+
+
+
+
+@*          <script>
+
+    $(document).ready(function () {
+        $('#stationeryForm').on('submit', function (event) {
+            event.preventDefault();
+
+            // Collect form data
+            var name = $('#validationDefault02').val();
+            var manager = $('#validationDefault03').val();
+            var stationery = $('#stationeryName').val();
+            var qty = $('#quantity').val();
+            var date = $('#validationDefault04').val();
+            var price = $('#price-value').text();
+
+            // AJAX post request
+            $.post('/Stationery/Add', {
+                name: name,
+                manager: manager,
+                stationery: stationery,
+                qty: qty,
+                date: date,
+                price: price
+            }, function (response) {
+                // Handle success response
+                console.log('Data inserted successfully');
+                // Optionally, you can redirect or show a success message here
+                window.location.href = "/viewrequest"; // Redirect to view request page
+            }).fail(function (xhr, textStatus, error) {
+                // Handle error response
+                console.error('Error: ' + textStatus, error);
+                // Optionally, you can show an error message here
+            });
+        });
+    });
+
+
+</script>  *@

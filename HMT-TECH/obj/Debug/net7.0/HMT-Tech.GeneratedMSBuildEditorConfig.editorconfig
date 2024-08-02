@@ -1,0 +1,127 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = HMT_Tech
+build_property.RootNamespace = HMT_Tech
+build_property.ProjectDir = C:\Users\Faizan\Desktop\Project\HMT-TECH\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Faizan\Desktop\Project\HMT-TECH
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Faizan/Desktop/Project/HMT-TECH/Views/Shared/Components/UserInfo/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcVXNlckluZm9cRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Faizan/Desktop/Project/HMT-TECH/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Faizan/Desktop/Project/HMT-TECH/Views/Shared/_Notification.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ob3RpZmljYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Faizan/Desktop/Project/HMT-TECH/Views/Shared/_NotificationUsers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ob3RpZmljYXRpb25Vc2Vycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Faizan/Desktop/Project/HMT-TECH/Views/Shared/_StationeryForm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TdGF0aW9uZXJ5Rm9ybS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Faizan/Desktop/Project/HMT-TECH/Views/Shared/_StationeryList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TdGF0aW9uZXJ5TGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Faizan/Desktop/Project/HMT-TECH/Views/Shared/_UserForm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Vc2VyRm9ybS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Faizan/Desktop/Project/HMT-TECH/Views/Shared/_UserList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Vc2VyTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Faizan/Desktop/Project/HMT-TECH/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Faizan/Desktop/Project/HMT-TECH/Views/Working/addnewuser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya2luZ1xhZGRuZXd1c2VyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Faizan/Desktop/Project/HMT-TECH/Views/Working/addstationery.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya2luZ1xhZGRzdGF0aW9uZXJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Faizan/Desktop/Project/HMT-TECH/Views/Working/allrequestdata.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya2luZ1xhbGxyZXF1ZXN0ZGF0YS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Faizan/Desktop/Project/HMT-TECH/Views/Working/contact.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya2luZ1xjb250YWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Faizan/Desktop/Project/HMT-TECH/Views/Working/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya2luZ1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Faizan/Desktop/Project/HMT-TECH/Views/Working/help.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya2luZ1xoZWxwLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Faizan/Desktop/Project/HMT-TECH/Views/Working/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya2luZ1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Faizan/Desktop/Project/HMT-TECH/Views/Working/login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya2luZ1xsb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Faizan/Desktop/Project/HMT-TECH/Views/Working/report.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya2luZ1xyZXBvcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Faizan/Desktop/Project/HMT-TECH/Views/Working/requestformpage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya2luZ1xyZXF1ZXN0Zm9ybXBhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Faizan/Desktop/Project/HMT-TECH/Views/Working/result.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya2luZ1xyZXN1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Faizan/Desktop/Project/HMT-TECH/Views/Working/unauthorized.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya2luZ1x1bmF1dGhvcml6ZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Faizan/Desktop/Project/HMT-TECH/Views/Working/UserEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya2luZ1xVc2VyRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Faizan/Desktop/Project/HMT-TECH/Views/Working/UserProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya2luZ1xVc2VyUHJvZmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Faizan/Desktop/Project/HMT-TECH/Views/Working/viewrequest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV29ya2luZ1x2aWV3cmVxdWVzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Faizan/Desktop/Project/HMT-TECH/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Faizan/Desktop/Project/HMT-TECH/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Faizan/Desktop/Project/HMT-TECH/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-97pc9stcnh

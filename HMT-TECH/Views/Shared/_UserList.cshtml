@@ -1,0 +1,34 @@
+﻿@model List<HMT_Tech.Models.Register>
+
+
+@foreach (var user in Model)
+{
+    <div class="col-lg-4 col-md-6">
+        <div class="card-transparent card-block card-stretch card-height">
+            <div class="card-body text-center p-0">
+                <div class="item">
+                    <div class="odr-img">
+                        <img src="@user.Image" class="img-fluid rounded-circle avatar-90 m-auto" alt="User Image">
+                    </div>
+                    <div class="odr-content rounded">
+                        <h4 class="mb-2">@user.Name</h4>
+                        <p class="mb-3">@user.Email</p>
+                        <ul class="list-unstyled mb-3">
+                            <li class="bg-primary card-transparent">@user.Role</li>
+                        </ul>
+                        <div class="pt-3 border-top">
+                            <a href="#" class="btn btn-primary open-modal" data-target="#add-balance" data-toggle="modal"
+                                data-email="@user.Email" data-identity="@user.Identity">Add Balance</a>
+                        </div>
+                        <div class="pt-3 border-top">
+                            <h5>Balance: $@user.Balance</h5>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+

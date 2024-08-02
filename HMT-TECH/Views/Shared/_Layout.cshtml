@@ -1,0 +1,333 @@
+﻿@using HMT_Tech.Models
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using System.Security.Claims
+@inject HMT_Tech.Database.ApplicationDbContext dbContext
+
+
+
+<!Doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>HMT Tech</title>
+
+    <!-- Favicon -->
+
+    <link rel="shortcut icon" href="/images/favicon.ico" />
+    <link rel="stylesheet" href="~/css/backend-plugin.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/css/backend.css?v=1.0.0">
+    <link rel="stylesheet" href="~/vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css">
+    <link rel="stylesheet" href="~/vendor/remixicon/fonts/remixicon.css">
+
+    <link rel="stylesheet" href="~/vendor/tui-calendar/tui-calendar/dist/tui-calendar.css">
+    <link rel="stylesheet" href="~/vendor/tui-calendar/tui-date-picker/dist/tui-date-picker.css">
+    <link rel="stylesheet" href="~/vendor/tui-calendar/tui-time-picker/dist/tui-time-picker.css">
+
+    <style>
+        .iq-progress-bar {
+            height: 9px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+
+        <div class="iq-sidebar  sidebar-default ">
+            <div class="iq-sidebar-logo d-flex align-items-center">
+                <a href="@Url.Action("index")" class="header-logo">
+                    <img src="~/images/logo.svg" alt="logo">
+                    <h3 class="logo-title light-logo">HMT</h3>
+                </a>
+                <div class="iq-menu-bt-sidebar ml-0">
+                    <i class="las la-bars wrapper-menu"></i>
+                </div>
+            </div>
+            <div class="data-scrollbar" data-scroll="1">
+               
+                 <nav class="iq-sidebar-menu">
+     <ul id="iq-sidebar-toggle" class="iq-menu">
+         <li>
+             <a href="@Url.Action("index")" class="svg-icon">
+                                <i class="fas fa-home"></i>
+
+                 <span class="ml-4">Home</span>
+             </a>
+         </li>
+         @if (Context.User.Identity.IsAuthenticated)
+         {
+             var userId = Context.User.FindFirstValue(ClaimTypes.NameIdentifier);
+             string role = null;
+
+             if (!string.IsNullOrEmpty(userId))
+             {
+                 var user = dbContext.Registers.FirstOrDefault(u => u.Id.ToString() == userId);
+                 if (user != null)
+                 {
+                     role = user.Role;
+                 }
+             }
+
+             @if (role == "Admin")
+             {
+                 <li>
+                          <a href="@Url.Action("addnewuser")" class="svg-icon">
+                                        <i class="fas fa-user-plus"></i>
+
+                         <span class="ml-4">Add New User</span>
+                     </a>
+                 </li>
+                            }
+                    @if (role == "Admin" || role == "Manager" || role == "Employee"){
+                 <li>
+                     <a href="@Url.Action("addstationery")" class="svg-icon">
+                                        <i class="fas fa-pen"></i>
+
+                         <span class="ml-4">Stationery Items</span>
+                     </a>
+                 </li>
+                 }
+                            @if (role == "Admin" || role == "Manager")
+                            {
+                                <li>
+                                    <a href="@Url.Action("allrequestdata")" class="svg-icon">
+                                        <i class="fas fa-database"></i>
+
+                         <span class="ml-4">Requested Data</span>
+                     </a>
+                 </li>
+            }
+
+             @if (role == "Manager" || role == "Employee")
+             {
+                 <li>
+                     <a href="@Url.Action("viewrequest")" class="svg-icon">
+                                        <i class="fas fa-eye"></i>
+
+                         <span class="ml-4">View Requests</span>
+                     </a>
+                 </li>
+             }
+
+
+                            @if (role == "Manager" || role == "Admin")
+                            {
+                                <li>
+                                    <a href="@Url.Action("report")" class="svg-icon">
+                                        <i class="fas fa-file-alt"></i>
+
+                                        <span class="ml-4">Stationery Report</span>
+                                    </a>
+                                </li>
+                            }
+
+                            @if ( role == "Admin")
+                            {
+                                <li>
+                                    <a href="@Url.Action("result")" class="svg-icon">
+                                        <i class="fas fa-chart-bar"></i>
+
+                                        <span class="ml-4">Requests Report</span>
+                                    </a>
+                                </li>
+                            }
+                        }
+
+         <li>
+             <a href="@Url.Action("help")" class="svg-icon">
+                                <i class="fas fa-question-circle"></i>
+
+                 <span class="ml-4">Need Help</span>
+             </a>
+         </li>
+         <li>
+             <a href="@Url.Action("contact")" class="svg-icon">
+                                <i class="fas fa-phone"></i>
+
+                 <span class="ml-4">Contact us</span>
+             </a>
+         </li>
+       
+     </ul>
+ </nav>
+
+                <div id="sidebar-bottom" class="position-relative sidebar-bottom">
+      
+                </div>
+                <div class="pt-5 pb-2"></div>
+            </div>
+        </div>
+        <div class="iq-top-navbar">
+            <div class="iq-navbar-custom">
+                <nav class="navbar navbar-expand-lg navbar-light p-0">
+                    <div class="iq-navbar-logo d-flex align-items-center justify-content-between">
+                        <i class="ri-menu-line wrapper-menu"></i>
+                        <a href="../backend/index.html" class="header-logo">
+                            <h4 class="logo-title text-uppercase">HMT</h4>
+
+                        </a>
+                    </div>
+                    <div class="navbar-breadcrumb">
+                        @* <h5>Dashboard</h5> *@
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-label="Toggle navigation">
+                            <i class="ri-menu-3-line"></i>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ml-auto navbar-list align-items-center">
+                               
+                                 <li class="nav-item nav-icon search-content">
+                                    <a href="#" class="search-toggle rounded" id="dropdownsearch" data-toggle="dropdown"
+                                       aria-haspopup="true" aria-expanded="false">
+                                        <i class="ri-search-line"></i>
+                                    </a>
+                                    <div class="iq-search-bar iq-sub-dropdown dropdown-menu"
+                                         aria-labelledby="dropdownsearch">
+                                        <form action="#" class="searchbox p-2">
+                                            <div class="form-group mb-0 position-relative">
+                                                <input type="text" class="text search-input font-size-12"
+                                                       placeholder="type here to search...">
+                                                <a href="#" class="search-link"><i class="las la-search"></i></a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </li> 
+                            
+                                @* Notification Start *@
+                                 @if (Context.User.Identity.IsAuthenticated){
+                                    var userId = Context.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                                    string role = null;
+
+                                    if (!string.IsNullOrEmpty(userId))
+                                    {
+                                        var user = dbContext.Registers.FirstOrDefault(u => u.Id.ToString() == userId);
+                                        if (user != null)
+                                        {
+                                            role = user.Role;
+                                        }
+                                    }
+
+                            
+                                   @if ( role == "Admin" || role =="Manager")
+                            {
+
+                                <partial name="_Notification" />
+
+                            }
+
+                                    @if ( role == "Employee")
+                            {
+                                <partial name="_NotificationUsers" />
+                            }
+         }
+
+                
+                                <li class="nav-item nav-icon dropdown caption-content">
+                                    @await Component.InvokeAsync("UserInfo")
+                                  @*   <a href="#" class="search-toggle dropdown-toggle  d-flex align-items-center"
+                                       id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true"
+                                       aria-expanded="false">
+                                        <img src="~/images/user/1.jpg" class="img-fluid rounded-circle"
+                                             alt="user">
+                                        <div class="caption ml-3">
+                                            <h6 class="mb-0 line-height">
+                                                Savannah Nguyen<i class="las la-angle-down ml-2"></i>
+                                            </h6>
+                                        </div>
+                                    </a> *@
+                                    <ul class="dropdown-menu dropdown-menu-right border-none"
+                                        aria-labelledby="dropdownMenuButton">
+
+                                          @if (Context.User.Identity.IsAuthenticated)
+                                        {
+                                            var userId = Context.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                                            string role = null;
+
+                                            if (!string.IsNullOrEmpty(userId))
+                                            {
+                                                var user = dbContext.Registers.FirstOrDefault(u => u.Id.ToString() == userId);
+                                                if (user != null)
+                                                {
+                                                    role = user.Role;
+                                                }
+                                            }
+
+                                            if (role == "Employee" || role == "Manager")
+                                            {
+                                                <li class="dropdown-item d-flex svg-icon">
+                                                    <svg class="svg-icon mr-0 text-primary" id="h-01-p" width="20"
+                                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                         stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                              d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                    </svg>
+                                                    <a href="@Url.Action("UserProfile")">My Profile</a>
+                                                </li>
+                                            }
+                                        }
+
+
+                                        <li class="dropdown-item d-flex svg-icon">
+                                            <svg class="svg-icon mr-0 text-primary" id="h-02-p" width="20"
+                                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                 stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                      d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                            </svg>
+                                            <a href="@Url.Action("UserEdit")">Edit Profile</a>
+                                        </li>
+                                     
+                                
+                                        <li class="dropdown-item  d-flex svg-icon border-top">
+                                            <svg class="svg-icon mr-0 text-primary" id="h-05-p" width="20"
+                                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                 stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                      d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                                            </svg>
+                                            <a href="@Url.Action("logout")" id="logoutButton">Logout</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+ 
+            @RenderBody()
+
+
+    <!-- Backend Bundle JavaScript -->
+    <script src="~/js/backend-bundle.min.js"></script>
+
+    <!-- Table Treeview JavaScript -->
+    <script src="~/js/table-treeview.js"></script>
+
+    <!-- Chart Custom JavaScript -->
+    <script src="~/js/customizer.js"></script>
+
+    <!-- Chart Custom JavaScript -->
+    <script async src="~/js/chart-custom.js"></script>
+    <!-- Chart Custom JavaScript -->
+    <script async src="~/js/slider.js"></script>
+
+    <!-- app JavaScript -->
+    <script src="~/js/app.js"></script>
+
+    <script src="~/vendor/moment.min.js"></script>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
